@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Affine",
+    "\\src\\Dataloader",
+    "\\src\\Loss",
+    "\\src\\MLP",
+    "\\src\\Sigmoid"
+  ],
+  "SelectedNode": "\\src\\Sigmoid\\Sigmoid.h",
+  "PreviewInSolutionExplorer": false
+}
