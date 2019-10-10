@@ -1,0 +1,5 @@
+﻿  Dataloader.cpp
+  main.cpp
+  Generating Code...
+C:\github\CSED-232\ASSN1\ASSN1\main.cpp(37,22): warning C4244:  'initializing': conversion from 'double' to 'float', possible loss of data
+  ASSN1.vcxproj -> C:\github\CSED-232\ASSN1\Debug\ASSN1.exe
