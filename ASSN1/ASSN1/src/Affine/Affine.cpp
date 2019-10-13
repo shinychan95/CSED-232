@@ -9,13 +9,11 @@ using namespace std;
 
 
 Affine::~Affine(void) {
-	cout << "Affine Start" << endl;
 	delete W;
 	delete B;
 	delete dW;
 	delete dB;
 	delete X;
-	cout << "Affine Delete" << endl;
 }
 
 void Affine::set(int _in_dimension, int _out_dimention) {
@@ -70,11 +68,9 @@ void Affine::update(float learning_rate) {
 
 	for (int i = 0; i < W_rows; i++) {
 		for (int j = 0; j < W_cols; j++) {
-
 			W->set(i, j, W->get_M_element(i, j) - (learning_rate * dW->get_M_element(i, j)));
 		}
 	}
-
 	for (int i = 0; i < B_rows; i++) {
 		for (int j = 0; j < B_cols; j++) {
 			B->set(i, j, B->get_M_element(i, j) - (learning_rate * dB->get_M_element(i, j)));

@@ -12,7 +12,6 @@ using namespace std;
 
 
 MLP::~MLP(void) {
-	cout << "MLP Start" << endl;
 	delete[] affine;
 	delete[] sigmoid;
 	delete loss;
@@ -22,7 +21,6 @@ MLP::~MLP(void) {
 	delete vali_label;
 	delete test_data;
 
-	cout << "MLP Delete" << endl;
 }
 
 MLP::MLP(int _epochs, float _learning_rate, int _num_of_hidden_layer, int* _arr_of_neuron, int _features, int _classes) {
@@ -51,11 +49,6 @@ void MLP::read_dataset(Dataloader& train, Dataloader& vali, Dataloader& test) {
 	vali_label->set(vali.get_label(), vali.get_data_num(), vali.get_class_num());
 	test_data->set(test.get_data(), test.get_data_num(), test.get_feature_num());
 
-	train_data->view_matrix();
-	train_label->view_matrix();
-	vali_data->view_matrix();
-	vali_label->view_matrix();
-	test_data->view_matrix();
 }
 
 
@@ -64,21 +57,21 @@ void MLP::set_layers(void) {
 		affine = new Affine[num_of_hidden_layer + 1];
 		sigmoid = new Sigmoid[num_of_hidden_layer + 1];
 		affine[0].set(features, arr_of_neuron[0]);
-		affine[0].initial_value_setting(1.0 / sqrt(features));
+		affine[0].initial_value_setting(10 / sqrt(features));
 		for (int i = 1; i < num_of_hidden_layer; i++) {
 			affine[i].set(arr_of_neuron[i - 1], arr_of_neuron[i]);
-			affine[i].initial_value_setting(1.1 / sqrt(arr_of_neuron[i - 1]));
+			affine[i].initial_value_setting(10 / sqrt(arr_of_neuron[i - 1]));
 		}
 		affine[num_of_hidden_layer].set(arr_of_neuron[num_of_hidden_layer - 1], classes);
-		affine[num_of_hidden_layer].initial_value_setting(1.2 / sqrt(arr_of_neuron[num_of_hidden_layer - 1]));
+		affine[num_of_hidden_layer].initial_value_setting(10.2 / sqrt(arr_of_neuron[num_of_hidden_layer - 1]));
 	}
 	else {
 		affine = new Affine[num_of_hidden_layer + 1];
 		sigmoid = new Sigmoid[num_of_hidden_layer + 1];
 		affine[0].set(features, arr_of_neuron[0]);
-		affine[0].initial_value_setting(1.0 / sqrt(features));
+		affine[0].initial_value_setting(10 / sqrt(features));
 		affine[num_of_hidden_layer].set(arr_of_neuron[num_of_hidden_layer - 1], classes);
-		affine[num_of_hidden_layer].initial_value_setting(1.1 / sqrt(arr_of_neuron[num_of_hidden_layer - 1]));
+		affine[num_of_hidden_layer].initial_value_setting(10.1 / sqrt(arr_of_neuron[num_of_hidden_layer - 1]));
 	}
 
 }
@@ -108,7 +101,7 @@ void MLP::visualize_layers(void) {
 void MLP::train(void) {
 	Matrix* X;
 	loss = new Loss;
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < epochs; i++) {
 		X = train_data;
 		for (int j = 0; j < num_of_hidden_layer + 1; j++) {
 			X = affine[j].forward(X);

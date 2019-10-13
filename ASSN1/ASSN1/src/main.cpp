@@ -69,7 +69,5 @@ int main(int argc, char* argv[]) {
 	mlp.predict(test_data, test_output_dir);
 
 	delete[] hidden_layer_neuron_arr;
-	cout << "³¡" << endl;
-	
 	return 0;
 }

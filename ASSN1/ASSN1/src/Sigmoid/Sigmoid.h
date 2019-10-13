@@ -10,8 +10,6 @@ private:
 
 public:
 	~Sigmoid(void);
-
 	Matrix* forward(Matrix* X);
-
 	Matrix* backward(Matrix* dOut);
 };

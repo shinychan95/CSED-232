@@ -7,10 +7,7 @@
 using namespace std;
 
 Sigmoid::~Sigmoid(void) {
-	cout << "Sigmoid Delete" << endl;
 	delete Out;
-
-	cout << "Sigmoid Delete" << endl;
 }
 
 Matrix* Sigmoid::forward(Matrix* X) {

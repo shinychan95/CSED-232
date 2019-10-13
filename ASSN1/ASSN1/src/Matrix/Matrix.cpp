@@ -7,14 +7,11 @@
 using namespace std;
 
 Matrix::~Matrix(void) {
-	cout << "Matrix Start" << endl;
 	for (int i = 0; i < rows; i++) {
 		delete[] M[i];
 	}
 
 	delete[] M;
-
-	cout << "Matrix Delete" << endl;
 }
 
 void Matrix::set(float** data, int _rows, int _cols) {

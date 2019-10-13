@@ -21,7 +21,7 @@ Dataloader::Dataloader(string _mode, string _dataset, string _file_dir, int _fea
 		data[i] = new float[feature_num];
 	}
 
-	if (_mode != "test") {
+	if (mode != "test") {
 		label = new float* [data_num];
 		for (int i = 0; i < data_num; i++) {
 			label[i] = new float[class_num];
@@ -30,21 +30,10 @@ Dataloader::Dataloader(string _mode, string _dataset, string _file_dir, int _fea
 			}
 		}
 	}
+	
+	
 }
 
-Dataloader::~Dataloader() {
-	cout << "Dataloader Start" << endl;
-	for (int i = 0; i < data_num; i++) {
-		delete[] data[i];
-		if(mode != "test")
-			delete[] label[i];
-	}
-
-	delete[] data;
-	delete[] label;
-
-	cout << "Dataloader Delete" << endl;
-}
 
 // If the last name of file_dir argument is dataset_name, just return file_dir.
 // However, if If the last name of file_dir argument is "data", return file_dir+"\\"+dataset_name.
@@ -91,10 +80,7 @@ void Dataloader::read(void) {
 
 		//cout << feature_num << endl;
 		if (index_of_feature == feature_num) {
-			if(dataset == "iris")
-				label[index_of_data][stoi(line.substr(front, back - front)) - 1] = 1;
-			else
-				label[index_of_data][stoi(line.substr(front, back - front))] = 1;
+			label[index_of_data][stoi(line.substr(front, back - front))] = 1;
 		}
 		else {
 			data[index_of_data][index_of_feature] = stof(line.substr(front, back - front));
