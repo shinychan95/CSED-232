@@ -96,7 +96,7 @@ void MLP::train(void) {
 		x = loss->forward(x, train_label);
 		float m_loss = calculate_mean_loss(x);
 
-		cout << "Epoch: " << i << "    " << "Acc: " << accuracy << "    " << "Mean Loss: " << m_loss << endl;
+		cout << "Epoch:   " << i << "     " << "Train Loss:   " << m_loss << "     " << "Train Accuracy:   " << accuracy << endl;
 
 		x = loss->backward();
 		for (int j = num_of_hidden_layer; j >= 0; j--) {
@@ -124,7 +124,7 @@ void MLP::validation(void) {
 	x = loss->forward(x, train_label);
 	float m_loss = calculate_mean_loss(x);
 
-	cout << "Validation: " << "Acc: " << accuracy << "    " << "Mean Loss: " << m_loss << endl;
+	cout << "Validation Loss:   " << m_loss << "     "<< "Validation Accuracy:   " << accuracy << endl;
 }
 
 void MLP::predict(Dataloader &test, string test_output_dir) {
