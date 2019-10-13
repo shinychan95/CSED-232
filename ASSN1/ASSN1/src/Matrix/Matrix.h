@@ -12,6 +12,8 @@ private:
 	int cols;
 
 public:
+	~Matrix();
+
 	void set(float** data, int _rows, int _cols);
 
 	void set(int _rows, int _cols);
@@ -21,6 +23,8 @@ public:
 	int get_rows(void);
 
 	int get_cols(void);
+
+	float** get_matrix(void);
 
 	float get_M_element(int i, int j);
 

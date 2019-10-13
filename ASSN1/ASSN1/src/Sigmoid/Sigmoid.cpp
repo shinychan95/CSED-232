@@ -6,6 +6,13 @@
 
 using namespace std;
 
+Sigmoid::~Sigmoid(void) {
+	cout << "Sigmoid Delete" << endl;
+	delete Out;
+
+	cout << "Sigmoid Delete" << endl;
+}
+
 Matrix* Sigmoid::forward(Matrix* X) {
 	int X_rows = X->get_rows();
 	int X_cols = X->get_cols();
@@ -18,8 +25,8 @@ Matrix* Sigmoid::forward(Matrix* X) {
 			Out->set(i, j, 1/(1 + exp(-1 * X->get_M_element(i, j))));
 		}
 	}
-
-	return Out;
+	Matrix* out = Out;
+	return out;
 }
 
 Matrix* Sigmoid::backward(Matrix* dOut) {

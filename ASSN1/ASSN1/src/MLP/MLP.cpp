@@ -11,6 +11,20 @@
 using namespace std;
 
 
+MLP::~MLP(void) {
+	cout << "MLP Start" << endl;
+	delete[] affine;
+	delete[] sigmoid;
+	delete loss;
+	delete train_data;
+	delete train_label;
+	delete vali_data;
+	delete vali_label;
+	delete test_data;
+
+	cout << "MLP Delete" << endl;
+}
+
 MLP::MLP(int _epochs, float _learning_rate, int _num_of_hidden_layer, int* _arr_of_neuron, int _features, int _classes) {
 	epochs = _epochs;
 	learning_rate = _learning_rate;
@@ -20,19 +34,30 @@ MLP::MLP(int _epochs, float _learning_rate, int _num_of_hidden_layer, int* _arr_
 	classes = _classes;
 }
 
-void MLP::read_dataset(Dataloader& train, Dataloader& vali) {
+void MLP::read_dataset(Dataloader& train, Dataloader& vali, Dataloader& test) {
 	train.read();
 	vali.read();
+	test.read();
+
 	train_data = new Matrix;
 	train_label = new Matrix;
 	vali_data = new Matrix;
 	vali_label = new Matrix;
+	test_data = new Matrix;
 
 	train_data->set(train.get_data(), train.get_data_num(), train.get_feature_num());
 	train_label->set(train.get_label(), train.get_data_num(), train.get_class_num());
 	vali_data->set(vali.get_data(), vali.get_data_num(), vali.get_feature_num());
 	vali_label->set(vali.get_label(), vali.get_data_num(), vali.get_class_num());
+	test_data->set(test.get_data(), test.get_data_num(), test.get_feature_num());
+
+	train_data->view_matrix();
+	train_label->view_matrix();
+	vali_data->view_matrix();
+	vali_label->view_matrix();
+	test_data->view_matrix();
 }
+
 
 void MLP::set_layers(void) {
 	if (num_of_hidden_layer >= 2) {
@@ -81,50 +106,50 @@ void MLP::visualize_layers(void) {
 }
 
 void MLP::train(void) {
-	Matrix* x = train_data;
+	Matrix* X;
 	loss = new Loss;
-
-	for (int i = 0; i < epochs; i++) {
-		x = train_data;
-
+	for (int i = 0; i < 10; i++) {
+		X = train_data;
 		for (int j = 0; j < num_of_hidden_layer + 1; j++) {
-			x = affine[j].forward(x);
-			x = sigmoid[j].forward(x);
+			X = affine[j].forward(X);
+			X = sigmoid[j].forward(X);
 		}
-		float accuracy = calculate_accuracy(x, train_label);
+		float accuracy = calculate_accuracy(X, train_label);
 
-		x = loss->forward(x, train_label);
-		float m_loss = calculate_mean_loss(x);
+		X = loss->forward(X, train_label);
+		float m_loss = calculate_mean_loss(X);
 
 		cout << "Epoch:   " << i << "     " << "Train Loss:   " << m_loss << "     " << "Train Accuracy:   " << accuracy << endl;
 
-		x = loss->backward();
+		X = loss->backward();
 		for (int j = num_of_hidden_layer; j >= 0; j--) {
-			x = sigmoid[j].backward(x);
-			x = affine[j].backward(x);
+			X = sigmoid[j].backward(X);
+			X = affine[j].backward(X);
 		}
 
 		for (int j = 0; j < num_of_hidden_layer + 1; j++)
 			affine[j].update(learning_rate);
 	}
+
 }
 
 
 
 void MLP::validation(void) {
-	Matrix* x;
-	x = vali_data;
+	Matrix* V;
+	V = vali_data;
 
 	for (int j = 0; j < num_of_hidden_layer + 1; j++) {
-		x = affine[j].forward(x);
-		x = sigmoid[j].forward(x);
+		V = affine[j].forward(V);
+		V = sigmoid[j].forward(V);
 	}
-	float accuracy = calculate_accuracy(x, train_label);
+	float accuracy = calculate_accuracy(V, train_label);
 
-	x = loss->forward(x, train_label);
-	float m_loss = calculate_mean_loss(x);
+	V = loss->forward(V, train_label);
+	float m_loss = calculate_mean_loss(V);
 
 	cout << "Validation Loss:   " << m_loss << "     "<< "Validation Accuracy:   " << accuracy << endl;
+
 }
 
 void MLP::predict(Dataloader &test, string test_output_dir) {
@@ -135,10 +160,9 @@ void MLP::predict(Dataloader &test, string test_output_dir) {
 	float max_index = 0;
 
 	Matrix* T;
-	T = new Matrix;
-	T->set(test.get_data(), test.get_data_num(), test.get_feature_num());
+	T = test_data;
 	
-
+	
 	for (int i = 0; i < num_of_hidden_layer + 1; i++) {
 		T = affine[i].forward(T);
 		T = sigmoid[i].forward(T);
@@ -155,6 +179,7 @@ void MLP::predict(Dataloader &test, string test_output_dir) {
 		file << max_index << endl;
 	}
 	file.close();
+
 }
 
 float MLP::calculate_accuracy(Matrix* y, Matrix* t) {

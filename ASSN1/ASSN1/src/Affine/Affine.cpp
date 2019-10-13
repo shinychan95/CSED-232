@@ -8,6 +8,16 @@
 using namespace std;
 
 
+Affine::~Affine(void) {
+	cout << "Affine Start" << endl;
+	delete W;
+	delete B;
+	delete dW;
+	delete dB;
+	delete X;
+	cout << "Affine Delete" << endl;
+}
+
 void Affine::set(int _in_dimension, int _out_dimention) {
 	in_dimension = _in_dimension;
 	out_dimension = _out_dimention;
@@ -30,7 +40,8 @@ int Affine::get_out_dm(void) {
 }
 
 Matrix* Affine::forward(Matrix* _X) {
-	X = _X;
+	X = new Matrix;
+	X->set(_X->get_matrix(), _X->get_rows(), _X->get_cols());
 	Matrix* Out;
 	Out = X->multiply(W);
 	Out->add_bias(B);

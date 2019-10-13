@@ -16,6 +16,7 @@ private:
 	Matrix* train_label;
 	Matrix* vali_data;
 	Matrix* vali_label;
+	Matrix* test_data;
 	int epochs;
 	int num_of_hidden_layer;
 	int features;
@@ -26,7 +27,9 @@ private:
 public:
 	MLP(int _epochs, float _learning_rate, int _num_of_hidden_layer, int* _arr_of_neuron, int _features, int _classes);
 
-	void read_dataset(Dataloader& train, Dataloader& vali);
+	~MLP(void);
+
+	void read_dataset(Dataloader& train, Dataloader& vali, Dataloader& test);
 
 	void set_layers(void);
 

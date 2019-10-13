@@ -6,6 +6,17 @@
 
 using namespace std;
 
+Matrix::~Matrix(void) {
+	cout << "Matrix Start" << endl;
+	for (int i = 0; i < rows; i++) {
+		delete[] M[i];
+	}
+
+	delete[] M;
+
+	cout << "Matrix Delete" << endl;
+}
+
 void Matrix::set(float** data, int _rows, int _cols) {
 	rows = _rows;
 	cols = _cols;
@@ -41,6 +52,10 @@ int Matrix::get_rows(void) {
 
 int Matrix::get_cols(void) {
 	return cols;
+}
+
+float** Matrix::get_matrix(void) {
+	return M;
 }
 
 float Matrix::get_M_element(int i, int j) {
@@ -144,7 +159,7 @@ Matrix* Matrix::sum_by_col(void) {
 
 void Matrix::view_matrix(void) {
 	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
+		for (int j = 0; j < cols; j++) {
 			cout << M[i][j] << " ";
 		}
 		cout << endl;

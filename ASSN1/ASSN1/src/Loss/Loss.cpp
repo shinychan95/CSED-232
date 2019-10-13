@@ -5,9 +5,20 @@
 #include "../Matrix/Matrix.h"
 
 
+Loss::~Loss(void) {
+	cout << "Loss Start" << endl;
+	delete Logit;
+	delete Label;
+	delete Output;
+
+	cout << "Loss Delete" << endl;
+}
+
 Matrix* Loss::forward(Matrix* logit, Matrix* label) {
-	Logit = logit;
-	Label = label;
+	Logit = new Matrix;
+	Logit->set(logit->get_matrix(), logit->get_rows(), logit->get_cols());
+	Label = new Matrix;
+	Label->set(label->get_matrix(), label->get_rows(), label->get_cols());
 	rows = Logit->get_rows();
 	cols = Logit->get_cols();
 

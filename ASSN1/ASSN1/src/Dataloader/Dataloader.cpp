@@ -32,6 +32,20 @@ Dataloader::Dataloader(string _mode, string _dataset, string _file_dir, int _fea
 	}
 }
 
+Dataloader::~Dataloader() {
+	cout << "Dataloader Start" << endl;
+	for (int i = 0; i < data_num; i++) {
+		delete[] data[i];
+		if(mode != "test")
+			delete[] label[i];
+	}
+
+	delete[] data;
+	delete[] label;
+
+	cout << "Dataloader Delete" << endl;
+}
+
 // If the last name of file_dir argument is dataset_name, just return file_dir.
 // However, if If the last name of file_dir argument is "data", return file_dir+"\\"+dataset_name.
 string Dataloader::_set_file_dir(string _dataset, string _file_dir) {

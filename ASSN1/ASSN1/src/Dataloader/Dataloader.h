@@ -19,6 +19,8 @@ private:
 public:
 	Dataloader(string _mode, string _dataset, string _file_dir, int _feature_num, int _class_num, int _data_num);
 	
+	~Dataloader();
+
 	string _set_file_dir(string _dataset, string _file_dir);
 
 	void read(void);

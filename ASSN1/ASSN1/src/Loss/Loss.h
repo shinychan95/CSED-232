@@ -14,6 +14,9 @@ private:
 	int cols;
 
 public:
+	~Loss(void);
+	
 	Matrix* forward(Matrix* logit, Matrix* label);
+	
 	Matrix* backward(void);
 };

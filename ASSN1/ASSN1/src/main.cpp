@@ -61,12 +61,15 @@ int main(int argc, char* argv[]) {
 	Dataloader test_data("test", dataset_type, test_data_dir, feature_num, class_num, test_data_num);
 
 	MLP mlp(epochs, learning_rate, hidden_layer_num, hidden_layer_neuron_arr, feature_num, class_num);
-	mlp.read_dataset(train_data, vali_data);
+	mlp.read_dataset(train_data, vali_data, test_data);
 	mlp.set_layers();
 	mlp.visualize_layers();
 	mlp.train();
 	mlp.validation();
 	mlp.predict(test_data, test_output_dir);
 
+	delete[] hidden_layer_neuron_arr;
+	cout << "³¡" << endl;
+	
 	return 0;
 }

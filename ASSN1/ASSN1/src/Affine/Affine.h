@@ -18,6 +18,8 @@ private:
 	Matrix* X;
 
 public:
+	~Affine(void);
+
 	void set(int _in_dimension, int _out_dimention);
 
 	void initial_value_setting(float std);
