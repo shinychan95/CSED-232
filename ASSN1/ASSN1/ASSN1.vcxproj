@@ -18,6 +18,23 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Affine\Affine.h" />
+    <ClInclude Include="src\Dataloader\Dataloader.h" />
+    <ClInclude Include="src\Loss\Loss.h" />
+    <ClInclude Include="src\Matrix\Matrix.h" />
+    <ClInclude Include="src\MLP\MLP.h" />
+    <ClInclude Include="src\Sigmoid\Sigmoid.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Affine\Affine.cpp" />
+    <ClCompile Include="src\Dataloader\Dataloader.cpp" />
+    <ClCompile Include="src\Loss\Loss.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Matrix\Matrix.cpp" />
+    <ClCompile Include="src\MLP\MLP.cpp" />
+    <ClCompile Include="src\Sigmoid\Sigmoid.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{B96D3836-1EE2-4741-9C8B-44014A56AF23}</ProjectGuid>
@@ -122,21 +139,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="Affine.h" />
-    <ClInclude Include="Dataloader.h" />
-    <ClInclude Include="Loss.h" />
-    <ClInclude Include="MLP.h" />
-    <ClInclude Include="Sigmoid.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Affine.cpp" />
-    <ClCompile Include="Dataloader.cpp" />
-    <ClCompile Include="Loss.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="MLP.cpp" />
-    <ClCompile Include="Sigmoid.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

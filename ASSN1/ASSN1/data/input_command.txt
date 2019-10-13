@@ -1,6 +1,0 @@
-iris 4 3 2 "10 10 10" 100 0.001 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_train.txt 150 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_val.txt 20 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_test.txt 30 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_test_result.txt
-
-
-train 150
-val 20
-test 30

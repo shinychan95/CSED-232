@@ -1,0 +1,1 @@
+iris 4 3 3 "10 10 10" 100 0.001 C:\github\CSED-232\ASSN1\ASSN1\data 150 C:\github\CSED-232\ASSN1\ASSN1\data 20 C:\github\CSED-232\ASSN1\ASSN1\data 30 C:\github\CSED-232\ASSN1\ASSN1\data

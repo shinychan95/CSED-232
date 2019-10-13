@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>iris 4 3 2 "10 10 10" 100 0.001 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_train.txt 150 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_val.txt 20 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_test.txt 30 C:\github\CSED-232\ASSN1\ASSN1\data\iris\iris_test_result.txt</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>two_moon 2 2 2 "10 10" 1000 0.001 C:\github\CSED-232\ASSN1\ASSN1\data 150 C:\github\CSED-232\ASSN1\ASSN1\data 20 C:\github\CSED-232\ASSN1\ASSN1\data 30 C:\github\CSED-232\ASSN1\ASSN1\data</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

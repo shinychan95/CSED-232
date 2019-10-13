@@ -15,39 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Affine.h">
+    <ClInclude Include="src\Affine\Affine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Sigmoid.h">
+    <ClInclude Include="src\Dataloader\Dataloader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MLP.h">
+    <ClInclude Include="src\Loss\Loss.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Loss.h">
+    <ClInclude Include="src\Matrix\Matrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Dataloader.h">
+    <ClInclude Include="src\MLP\MLP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sigmoid\Sigmoid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\Sigmoid\Sigmoid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Affine.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Loss.cpp">
+    <ClCompile Include="src\MLP\MLP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sigmoid.cpp">
+    <ClCompile Include="src\Matrix\Matrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MLP.cpp">
+    <ClCompile Include="src\Loss\Loss.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Dataloader.cpp">
+    <ClCompile Include="src\Dataloader\Dataloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Affine\Affine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
