@@ -1,8 +1,0 @@
-﻿  MLP.cpp
-C:\github\CSED-232\ASSN1\ASSN1\src\MLP\MLP.cpp(42,39): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-C:\github\CSED-232\ASSN1\ASSN1\src\MLP\MLP.cpp(45,40): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-C:\github\CSED-232\ASSN1\ASSN1\src\MLP\MLP.cpp(48,57): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-C:\github\CSED-232\ASSN1\ASSN1\src\MLP\MLP.cpp(54,39): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-C:\github\CSED-232\ASSN1\ASSN1\src\MLP\MLP.cpp(56,57): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
-C:\github\CSED-232\ASSN1\ASSN1\src\MLP\MLP.cpp(152,17): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
-  ASSN1.vcxproj -> C:\github\CSED-232\ASSN1\Debug\ASSN1.exe
