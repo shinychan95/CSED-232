@@ -26,14 +26,47 @@ class Employee : public Person
 private:
 	virtual void Action();
 };
-
-
+class Stack {
+public:
+	enum { MaxStack = 5 }; // public에 enum을 통해 클래스 내부 변수화. 가독성 증가.
+	void init() { top = -1; }
+	void push(int n) {
+		if (isFull()) {
+			errMsg("Fullstack.Can'tpush.");
+			return;
+		}
+		arr[++top] = n;
+	}
+	int pop() { // top이라는 index를 통해 값을 계속 재입력하기 떄문에, 지워줄 필요가 없음.
+		if (isEmpty()) {
+			errMsg("Emptystack.Poppingdummyvalue.");
+			return dummy_val;
+		}
+		return arr[top--];
+	}
+	bool isEmpty() { return top < 0; }
+	bool isFull() { return top >= MaxStack - 1; }
+	void dump() {
+		cout << "Stackcontents,toptobottom:\n";
+		for (int i = top; i >= 0; i--)
+			cout << '\t' << arr[i] << '\n';
+	}
+private:
+	void errMsg(const char* msg)const {
+		cerr << "\n***Stackoperationfailure:" << msg << '\n';
+	}
+	int top;
+	int arr[MaxStack]; // enum value를 통해 초기화 가능.
+	int dummy_val;
+};
 
 int main() {
 	// 위 선언이 없다면,
 	std::cout << "Hello Exam" << std::endl;
 	std::string name = "Cody";
 	std::ifstream file; // 파일을 읽어드리는 변수
+
+
 
 	// ***Chap 1*** 
 	// Figure 1.3.1
@@ -52,6 +85,8 @@ int main() {
 	}
 	in.close();
 	out.close();
+
+
 
 	// Virtual Function
 	// 같은 이름의 method가 부모 자식 동시에 있을 때, Virtual Function이 없다면, 부모 함수만 소환 됨.
@@ -72,6 +107,7 @@ int main() {
 	employee.DoAction();
 
 
+
 	// ***Chap 2*** 
 	// Ex. 2.2.3
 	// 입력받는 데이터 타입으로 프로그램의 흐름을 조절할 수 있다.
@@ -86,6 +122,7 @@ int main() {
 	cout << "Sum of all values: " << sum << '\n';
 
 
+
 	// 2.3 Files
 	ifstream _file;
 	string str;
@@ -93,6 +130,7 @@ int main() {
 	if (_file >> str) // 파일이 열려있다면 True인데, 이는 파일이 열려 있으면 str에 data가 입력받기 때문에,
 		cout << str << endl; // string이 아니라 int라면 false로 데이터 받지 않음.
 	
+
 
 	// reinterpret_cast
 	int i;
@@ -105,7 +143,11 @@ int main() {
 		cout << static_cast<int>(p[i]) << "\n";
 
 
-	enum Color { // 열거자(enumerator) // 각 열거자는 세미콜론(;)이 아니라 쉼표(,)로 구분된다. 
+
+	// Enumerated Types
+	enum Color { 
+		// 열거자(enumerator) 
+		// 각 열거자는 세미콜론(;)이 아니라 쉼표(,)로 구분된다. 
 		COLOR_BLACK, 
 		COLOR_RED, 
 		COLOR_BLUE, 
@@ -113,19 +155,38 @@ int main() {
 		COLOR_WHITE, 
 		COLOR_CYAN, 
 		COLOR_YELLOW, 
-		COLOR_MAGENTA, 
-	}; // 그러나 enum 자체는 세미콜론으로 끝나야 한다. 
-	
-	   // 열거형 Color의 변수들 정의 
+		COLOR_MAGENTA
+	}; // 그러나 enum 자체는 세미콜론으로 끝나야 한다.
+
+	// 열거형 Color의 변수들 정의 
 	Color paint = COLOR_WHITE; 
 	Color house(COLOR_BLUE); 
 	Color apple { COLOR_RED };
 
-	cout << paint << endl;
+	cout << paint << endl; // 4 출력, +a 열거자의 값 지정 가능
 	if (paint == 4)
-		cout << "wow" << endl;
+		cout << "Can Use enum index" << endl;
 	if (paint == COLOR_WHITE)
-		cout << "wow" << endl;
+		cout << "Can Use enum value" << endl;
+	
+
+
+	// Member Selector Operators
+	struct C {
+		int x;
+		float y;
+		float z;
+	};
+	
+	float f;
+	int* i_ptr;
+	C c1, c2;
+	C* c_ptr; // C를 가리키는 포인터 정의
+	float C::*f_ptr; // C의 float 멤버를 가리키는 포인터 정의
+	c_ptr = &c1; // c_ptr이 c1을 가리키도록 설정
+	f_ptr = &C::z; // f_ptr이 z를 가리키도록 설정
+	c1.*f_ptr = 3.14; // c1.y를 3.14로 설정
+	c_ptr->*f_ptr = 123.32; // c1.z에 123.32로 설정
 	
 	return 0;
 }
