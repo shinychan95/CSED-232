@@ -188,6 +188,46 @@ int main() {
 	c1.*f_ptr = 3.14; // c1.y를 3.14로 설정
 	c_ptr->*f_ptr = 123.32; // c1.z에 123.32로 설정
 	
+	
+
+	// cast_const의 conversion type으로 pointer와 reference만 와야하는 이유
+	// 우선 const의 두 가지 측면, 리터럴 const, 상수 const 의미
+	// 리터럴 const의 경우 #define과 같이 compile시 아예 true constant로 변한다고 생각하면 편하다.
+	struct type {
+		int i;
+
+		type() : i(3) {} // 약간 constructor 느낌
+
+		void f(int v) const {
+			// this->i = v;                 // compile error: this is a pointer to const
+			const_cast<type*>(this)->i = v; // OK as long as the type object isn't const
+		}
+	};
+
+	type t;
+	cout << "t: " << t.i << endl;
+
+	i = 3;                 // i is not declared const
+	const int& rci = i;
+	const_cast<int&>(rci) = 4; // OK: modifies i
+	std::cout << "i = " << i << '\n';
+
+	int number = 3;
+	const int* var = &number;
+
+	*const_cast<int*>(var) = 5; // 이런 식으로도 바꿀 수 있음
+
+	cout << "var: " << *var << endl;
+
+	// 결론
+	// When a value of a ‘const’ variable can be calculated during the compilation, it creates a true constant.
+	// That’s why there is no location in the memory that can be changed to affect all places where it is used. 
+	// It is like using #define.
+	// 물론 pointer를 통해서 값을 바꿀 수 있긴 하다.
+
+
+
+
 	return 0;
 }
 
