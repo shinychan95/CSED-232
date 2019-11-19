@@ -24,6 +24,8 @@ typedef enum _complement {
 	LOSE = 1 << 8,
 } Complement;
 
+
+
 //콘솔 출력 커서를 입력받은 좌표로 이동시키는 함수
 inline void gotoxy(int x, int y) {
 	COORD Pos;

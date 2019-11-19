@@ -39,8 +39,11 @@ int main()
 		cin >> filename;
 		if (!Map::ReadMap(filename)) continue; //파일을 못 읽었으면 다시 입력하게 한다.
 		Map::PrintMap();
-		cout << filename << " Load Complete. Press Any Key to Continue...";
+		cout << filename << " Load Complete." << endl;
+		cout << "Press Any Key to Continue...";
 		KeyInput();
+		
+
 		while (true) {
 			Map::CheckRules();
 			Map::ChangeEntity();
@@ -66,6 +69,7 @@ int main()
 			}
 			Map::YouMove(dir);
 		}
+		
 	}
 
 	return 0;
