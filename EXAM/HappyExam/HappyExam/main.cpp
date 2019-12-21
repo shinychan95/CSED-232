@@ -1,21 +1,21 @@
-#include <iostream> // Ç¥ÁØ ÀÔÃâ·Â ¶óÀÌºê·¯¸® 
-#include <string>	// String Data Type ¶óÀÌºê·¯¸® 
-#include <fstream>	// ÆÄÀÏ ÀÔÃâ·Â ¶óÀÌºê·¯¸®
-#include <iomanip>	// Manipulator ¶óÀÌºê·¯¸®
+ï»¿#include <iostream> // í‘œì¤€ ì…ì¶œë ¥ ë¼ì´ë¸ŒëŸ¬ë¦¬ 
+#include <string>	// String Data Type ë¼ì´ë¸ŒëŸ¬ë¦¬ 
+#include <fstream>	// íŒŒì¼ ì…ì¶œë ¥ ë¼ì´ë¸ŒëŸ¬ë¦¬
+#include <iomanip>	// Manipulator ë¼ì´ë¸ŒëŸ¬ë¦¬
 
-using namespace std;	// À§ ¼¼ °¡Áö°¡ »ç½Ç Ç¥ÁØ ³»ÀåÀÌ¶ó¼­ ÀÌ°É ÇØÁà¾ß ¼Â ´Ù ÆíÇÏ°Ô ¾¸
+using namespace std;	// ìœ„ ì„¸ ê°€ì§€ê°€ ì‚¬ì‹¤ í‘œì¤€ ë‚´ì¥ì´ë¼ì„œ ì´ê±¸ í•´ì¤˜ì•¼ ì…‹ ë‹¤ í¸í•˜ê²Œ ì”€
 
 // Class Declaration
 
-// Virtual Function °ü·Ã
+// Virtual Function ê´€ë ¨
 class Person
 {
 public:
 	void DoAction();
 
 private:
-	virtual void Action() = 0; 
-};							   
+	virtual void Action() = 0;
+};
 class Student : public Person
 {
 private:
@@ -28,7 +28,7 @@ private:
 };
 class Stack {
 public:
-	enum { MaxStack = 5 }; // public¿¡ enumÀ» ÅëÇØ Å¬·¡½º ³»ºÎ º¯¼öÈ­. °¡µ¶¼º Áõ°¡.
+	enum { MaxStack = 5 }; // publicì— enumì„ í†µí•´ í´ë˜ìŠ¤ ë‚´ë¶€ ë³€ìˆ˜í™”. ê°€ë…ì„± ì¦ê°€.
 	void init() { top = -1; }
 	void push(int n) {
 		if (isFull()) {
@@ -37,7 +37,7 @@ public:
 		}
 		arr[++top] = n;
 	}
-	int pop() { // topÀÌ¶ó´Â index¸¦ ÅëÇØ °ªÀ» °è¼Ó ÀçÀÔ·ÂÇÏ±â ‹š¹®¿¡, Áö¿öÁÙ ÇÊ¿ä°¡ ¾øÀ½.
+	int pop() { // topì´ë¼ëŠ” indexë¥¼ í†µí•´ ê°’ì„ ê³„ì† ì¬ì…ë ¥í•˜ê¸° Â‹Âšë¬¸ì—, ì§€ì›Œì¤„ í•„ìš”ê°€ ì—†ìŒ.
 		if (isEmpty()) {
 			errMsg("Emptystack.Poppingdummyvalue.");
 			return dummy_val;
@@ -56,30 +56,30 @@ private:
 		cerr << "\n***Stackoperationfailure:" << msg << '\n';
 	}
 	int top;
-	int arr[MaxStack]; // enum value¸¦ ÅëÇØ ÃÊ±âÈ­ °¡´É.
+	int arr[MaxStack]; // enum valueë¥¼ í†µí•´ ì´ˆê¸°í™” ê°€ëŠ¥.
 	int dummy_val;
 };
 
 int main() {
-	// À§ ¼±¾ğÀÌ ¾ø´Ù¸é,
+	// ìœ„ ì„ ì–¸ì´ ì—†ë‹¤ë©´,
 	std::cout << "Hello Exam" << std::endl;
 	std::string name = "Cody";
-	std::ifstream file; // ÆÄÀÏÀ» ÀĞ¾îµå¸®´Â º¯¼ö
+	std::ifstream file; // íŒŒì¼ì„ ì½ì–´ë“œë¦¬ëŠ” ë³€ìˆ˜
 
 
 
 	// ***Chap 1*** 
 	// Figure 1.3.1
-	string line;	// getline¿¡¼­ ÀÔ·Â¹Ş±â À§ÇÑ º¯¼ö ¼±¾ğ ÇÊ¼ö
+	string line;	// getlineì—ì„œ ì…ë ¥ë°›ê¸° ìœ„í•œ ë³€ìˆ˜ ì„ ì–¸ í•„ìˆ˜
 	ifstream in;
 	ofstream out;
 	const int num = 1;
 	in.open("./data/name.txt");
 	out.open("./data/out.dat");
-	// getlineÀÇ º¯¼ö·Î, ÀÔ·Â ÆÄÀÏ º¯¼ö¿Í, µ¥ÀÌÅÍ Å¸ÀÔÀ» °¡Áø º¯¼ö¸¦ ³Ö¾îÁà¾ß ÇÑ´Ù.
-	while (getline(in, line)) { // (istream&, string&, deli), ¹Ì¸® string º¯¼ö ¼±¾ğ ÁÖÀÇ
+	// getlineì˜ ë³€ìˆ˜ë¡œ, ì…ë ¥ íŒŒì¼ ë³€ìˆ˜ì™€, ë°ì´í„° íƒ€ì…ì„ ê°€ì§„ ë³€ìˆ˜ë¥¼ ë„£ì–´ì¤˜ì•¼ í•œë‹¤.
+	while (getline(in, line)) { // (istream&, string&, deli), ë¯¸ë¦¬ string ë³€ìˆ˜ ì„ ì–¸ ì£¼ì˜
 		cout << line << endl;
-		line.insert(num, "19"); // (index, string&), index ÃÊ°ú ½Ã ¿À·ù ÁÖÀÇ
+		line.insert(num, "19"); // (index, string&), index ì´ˆê³¼ ì‹œ ì˜¤ë¥˜ ì£¼ì˜
 		cout << line << endl;
 		out << line << '\n';
 	}
@@ -89,15 +89,15 @@ int main() {
 
 
 	// Virtual Function
-	// °°Àº ÀÌ¸§ÀÇ method°¡ ºÎ¸ğ ÀÚ½Ä µ¿½Ã¿¡ ÀÖÀ» ¶§, Virtual FunctionÀÌ ¾ø´Ù¸é, ºÎ¸ğ ÇÔ¼ö¸¸ ¼ÒÈ¯ µÊ.
-	// Virtual FunctionÀ¸·Î ¸¸µç´Ù¸é, ÇØ´ç Å¬·¡½ºÀÇ method°¡ ½ÇÇà µÊ.
+	// ê°™ì€ ì´ë¦„ì˜ methodê°€ ë¶€ëª¨ ìì‹ ë™ì‹œì— ìˆì„ ë•Œ, Virtual Functionì´ ì—†ë‹¤ë©´, ë¶€ëª¨ í•¨ìˆ˜ë§Œ ì†Œí™˜ ë¨.
+	// Virtual Functionìœ¼ë¡œ ë§Œë“ ë‹¤ë©´, í•´ë‹¹ í´ë˜ìŠ¤ì˜ methodê°€ ì‹¤í–‰ ë¨.
 
-	// Pure Virtual FunctionÀº (´ë°³) ºÎ¸ğ Å¬·¡½º¿¡¼­ ±¸Çö ´ë½Å Virtual Function¿¡ NULL (0)°ªÀ» ´ëÀÔÇÏ¸é,
-	// ÇØ´ç ÇÔ¼ö´Â pure virtual functionÀÌ µÇ°í, ±× Å¬·¡½º´Â abstract class°¡ µÈ´Ù.
-	// Áï, Ãß»ó Å¬·¡½º´Â 'Ãß»óÀûÀÎ ÇüÅÂ'¸¸ Á¦¾ÈÇÏ°í, ½ÇÁ¦ ±¸ÇöÀº ÀÚ½Ä Å¬·¡½º·Î ¹Ì·ç±â À§ÇØ »ç¿ëµË´Ï´Ù.
-	// ÀÌ¸¦ ½±°Ô ºñÀ¯ÇÏ¸é, Å« ¸íÁ¦¿¡ ¸î°³ÀÇ °ıÈ£¸¦ ºñ¿ö³õÀº °ÍÀÌ¶ó°í ÇÒ ¼ö ÀÖ½À´Ï´Ù.
-	// ÇĞ»ıÀº ÀÏ¾î³ª¼­[°øºÎ]¸¦ ÇÏ°í Àá¿¡ µç´Ù.
-	// Á÷¿øÀº ÀÏ¾î³ª¼­[ÀÏ]À» ÇÏ°í Àá¿¡ µç´Ù.
+	// Pure Virtual Functionì€ (ëŒ€ê°œ) ë¶€ëª¨ í´ë˜ìŠ¤ì—ì„œ êµ¬í˜„ ëŒ€ì‹  Virtual Functionì— NULL (0)ê°’ì„ ëŒ€ì…í•˜ë©´,
+	// í•´ë‹¹ í•¨ìˆ˜ëŠ” pure virtual functionì´ ë˜ê³ , ê·¸ í´ë˜ìŠ¤ëŠ” abstract classê°€ ëœë‹¤.
+	// ì¦‰, ì¶”ìƒ í´ë˜ìŠ¤ëŠ” 'ì¶”ìƒì ì¸ í˜•íƒœ'ë§Œ ì œì•ˆí•˜ê³ , ì‹¤ì œ êµ¬í˜„ì€ ìì‹ í´ë˜ìŠ¤ë¡œ ë¯¸ë£¨ê¸° ìœ„í•´ ì‚¬ìš©ë©ë‹ˆë‹¤.
+	// ì´ë¥¼ ì‰½ê²Œ ë¹„ìœ í•˜ë©´, í° ëª…ì œì— ëª‡ê°œì˜ ê´„í˜¸ë¥¼ ë¹„ì›Œë†“ì€ ê²ƒì´ë¼ê³  í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.
+	// í•™ìƒì€ ì¼ì–´ë‚˜ì„œ[ê³µë¶€]ë¥¼ í•˜ê³  ì ì— ë“ ë‹¤.
+	// ì§ì›ì€ ì¼ì–´ë‚˜ì„œ[ì¼]ì„ í•˜ê³  ì ì— ë“ ë‹¤.
 
 	Student student;
 	Employee employee;
@@ -110,7 +110,7 @@ int main() {
 
 	// ***Chap 2*** 
 	// Ex. 2.2.3
-	// ÀÔ·Â¹Ş´Â µ¥ÀÌÅÍ Å¸ÀÔÀ¸·Î ÇÁ·Î±×·¥ÀÇ Èå¸§À» Á¶ÀıÇÒ ¼ö ÀÖ´Ù.
+	// ì…ë ¥ë°›ëŠ” ë°ì´í„° íƒ€ì…ìœ¼ë¡œ í”„ë¡œê·¸ë¨ì˜ íë¦„ì„ ì¡°ì ˆí•  ìˆ˜ ìˆë‹¤.
 	int val, sum = 0;
 	cout << "Enter next number: ";
 	/*
@@ -127,15 +127,15 @@ int main() {
 	ifstream _file;
 	string str;
 	_file.open("./data/name.txt");
-	if (_file >> str) // ÆÄÀÏÀÌ ¿­·ÁÀÖ´Ù¸é TrueÀÎµ¥, ÀÌ´Â ÆÄÀÏÀÌ ¿­·Á ÀÖÀ¸¸é str¿¡ data°¡ ÀÔ·Â¹Ş±â ¶§¹®¿¡,
-		cout << str << endl; // stringÀÌ ¾Æ´Ï¶ó int¶ó¸é false·Î µ¥ÀÌÅÍ ¹ŞÁö ¾ÊÀ½.
-	
+	if (_file >> str) // íŒŒì¼ì´ ì—´ë ¤ìˆë‹¤ë©´ Trueì¸ë°, ì´ëŠ” íŒŒì¼ì´ ì—´ë ¤ ìˆìœ¼ë©´ strì— dataê°€ ì…ë ¥ë°›ê¸° ë•Œë¬¸ì—,
+		cout << str << endl; // stringì´ ì•„ë‹ˆë¼ intë¼ë©´ falseë¡œ ë°ì´í„° ë°›ì§€ ì•ŠìŒ.
+
 
 
 	// reinterpret_cast
 	int i;
 	float f = -6.9072; // float = 4 byte
-	cout << &f << endl; // ÁÖ¼Ò
+	cout << &f << endl; // ì£¼ì†Œ
 	unsigned char* p =
 		reinterpret_cast<unsigned char*>(&f); // char = 1 byte
 	cout << hex; // print bytes of f in hex
@@ -145,30 +145,30 @@ int main() {
 
 
 	// Enumerated Types
-	enum Color { 
-		// ¿­°ÅÀÚ(enumerator) 
-		// °¢ ¿­°ÅÀÚ´Â ¼¼¹ÌÄİ·Ğ(;)ÀÌ ¾Æ´Ï¶ó ½°Ç¥(,)·Î ±¸ºĞµÈ´Ù. 
-		COLOR_BLACK, 
-		COLOR_RED, 
-		COLOR_BLUE, 
-		COLOR_GREEN, 
-		COLOR_WHITE, 
-		COLOR_CYAN, 
-		COLOR_YELLOW, 
+	enum Color {
+		// ì—´ê±°ì(enumerator) 
+		// ê° ì—´ê±°ìëŠ” ì„¸ë¯¸ì½œë¡ (;)ì´ ì•„ë‹ˆë¼ ì‰¼í‘œ(,)ë¡œ êµ¬ë¶„ëœë‹¤. 
+		COLOR_BLACK,
+		COLOR_RED,
+		COLOR_BLUE,
+		COLOR_GREEN,
+		COLOR_WHITE,
+		COLOR_CYAN,
+		COLOR_YELLOW,
 		COLOR_MAGENTA
-	}; // ±×·¯³ª enum ÀÚÃ¼´Â ¼¼¹ÌÄİ·ĞÀ¸·Î ³¡³ª¾ß ÇÑ´Ù.
+	}; // ê·¸ëŸ¬ë‚˜ enum ìì²´ëŠ” ì„¸ë¯¸ì½œë¡ ìœ¼ë¡œ ëë‚˜ì•¼ í•œë‹¤.
 
-	// ¿­°ÅÇü ColorÀÇ º¯¼öµé Á¤ÀÇ 
-	Color paint = COLOR_WHITE; 
-	Color house(COLOR_BLUE); 
-	Color apple { COLOR_RED };
+	// ì—´ê±°í˜• Colorì˜ ë³€ìˆ˜ë“¤ ì •ì˜ 
+	Color paint = COLOR_WHITE;
+	Color house(COLOR_BLUE);
+	Color apple{ COLOR_RED };
 
-	cout << paint << endl; // 4 Ãâ·Â, +a ¿­°ÅÀÚÀÇ °ª ÁöÁ¤ °¡´É
+	cout << paint << endl; // 4 ì¶œë ¥, +a ì—´ê±°ìì˜ ê°’ ì§€ì • ê°€ëŠ¥
 	if (paint == 4)
 		cout << "Can Use enum index" << endl;
 	if (paint == COLOR_WHITE)
 		cout << "Can Use enum value" << endl;
-	
+
 
 
 	// Member Selector Operators
@@ -177,26 +177,26 @@ int main() {
 		float y;
 		float z;
 	};
+
 	
-	float f;
 	int* i_ptr;
 	C c1, c2;
-	C* c_ptr; // C¸¦ °¡¸®Å°´Â Æ÷ÀÎÅÍ Á¤ÀÇ
-	float C::*f_ptr; // CÀÇ float ¸â¹ö¸¦ °¡¸®Å°´Â Æ÷ÀÎÅÍ Á¤ÀÇ
-	c_ptr = &c1; // c_ptrÀÌ c1À» °¡¸®Å°µµ·Ï ¼³Á¤
-	f_ptr = &C::z; // f_ptrÀÌ z¸¦ °¡¸®Å°µµ·Ï ¼³Á¤
-	c1.*f_ptr = 3.14; // c1.y¸¦ 3.14·Î ¼³Á¤
-	c_ptr->*f_ptr = 123.32; // c1.z¿¡ 123.32·Î ¼³Á¤
-	
-	
+	C* c_ptr; // Cë¥¼ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„° ì •ì˜
+	float C::* f_ptr; // Cì˜ float ë©¤ë²„ë¥¼ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„° ì •ì˜
+	c_ptr = &c1; // c_ptrì´ c1ì„ ê°€ë¦¬í‚¤ë„ë¡ ì„¤ì •
+	f_ptr = &C::z; // f_ptrì´ zë¥¼ ê°€ë¦¬í‚¤ë„ë¡ ì„¤ì •
+	c1.*f_ptr = 3.14; // c1.yë¥¼ 3.14ë¡œ ì„¤ì •
+	c_ptr->*f_ptr = 123.32; // c1.zì— 123.32ë¡œ ì„¤ì •
 
-	// cast_constÀÇ conversion typeÀ¸·Î pointer¿Í reference¸¸ ¿Í¾ßÇÏ´Â ÀÌÀ¯
-	// ¿ì¼± constÀÇ µÎ °¡Áö Ãø¸é, ¸®ÅÍ·² const, »ó¼ö const ÀÇ¹Ì
-	// ¸®ÅÍ·² constÀÇ °æ¿ì #define°ú °°ÀÌ compile½Ã ¾Æ¿¹ true constant·Î º¯ÇÑ´Ù°í »ı°¢ÇÏ¸é ÆíÇÏ´Ù.
+
+
+	// cast_constì˜ conversion typeìœ¼ë¡œ pointerì™€ referenceë§Œ ì™€ì•¼í•˜ëŠ” ì´ìœ 
+	// ìš°ì„  constì˜ ë‘ ê°€ì§€ ì¸¡ë©´, ë¦¬í„°ëŸ´ const, ìƒìˆ˜ const ì˜ë¯¸
+	// ë¦¬í„°ëŸ´ constì˜ ê²½ìš° #defineê³¼ ê°™ì´ compileì‹œ ì•„ì˜ˆ true constantë¡œ ë³€í•œë‹¤ê³  ìƒê°í•˜ë©´ í¸í•˜ë‹¤.
 	struct type {
 		int i;
 
-		type() : i(3) {} // ¾à°£ constructor ´À³¦
+		type() : i(3) {} // ì•½ê°„ constructor ëŠë‚Œ
 
 		void f(int v) const {
 			// this->i = v;                 // compile error: this is a pointer to const
@@ -215,15 +215,15 @@ int main() {
 	int number = 3;
 	const int* var = &number;
 
-	*const_cast<int*>(var) = 5; // ÀÌ·± ½ÄÀ¸·Îµµ ¹Ù²Ü ¼ö ÀÖÀ½
+	*const_cast<int*>(var) = 5; // ì´ëŸ° ì‹ìœ¼ë¡œë„ ë°”ê¿€ ìˆ˜ ìˆìŒ
 
 	cout << "var: " << *var << endl;
 
-	// °á·Ğ
-	// When a value of a ¡®const¡¯ variable can be calculated during the compilation, it creates a true constant.
-	// That¡¯s why there is no location in the memory that can be changed to affect all places where it is used. 
+	// ê²°ë¡ 
+	// When a value of a â€˜constâ€™ variable can be calculated during the compilation, it creates a true constant.
+	// Thatâ€™s why there is no location in the memory that can be changed to affect all places where it is used. 
 	// It is like using #define.
-	// ¹°·Ğ pointer¸¦ ÅëÇØ¼­ °ªÀ» ¹Ù²Ü ¼ö ÀÖ±ä ÇÏ´Ù.
+	// ë¬¼ë¡  pointerë¥¼ í†µí•´ì„œ ê°’ì„ ë°”ê¿€ ìˆ˜ ìˆê¸´ í•˜ë‹¤.
 
 
 
@@ -241,9 +241,9 @@ void Person::DoAction()
 	std::cout << "Sleep.." << std::endl;
 }
 
-// ¼±¾ğ°ú ´Ù¸£°Ô virtualÀÌ ¾Õ¿¡ ¾ø´Âµ¥,
-void Student::Action() // virtual (°¡»óÇÔ¼ö) ´Â ¼±¾ğºÎ¿¡¼­ ÇÑ¹ø¸¸ ¼±¾ğÇÑ´Ù.
-{						// +a staticÀº Çì´õÆÄÀÏ¿¡ ¼±¾ğÇÏ°í ±¸ÇöÇÑ´Ù.
+// ì„ ì–¸ê³¼ ë‹¤ë¥´ê²Œ virtualì´ ì•ì— ì—†ëŠ”ë°,
+void Student::Action() // virtual (ê°€ìƒí•¨ìˆ˜) ëŠ” ì„ ì–¸ë¶€ì—ì„œ í•œë²ˆë§Œ ì„ ì–¸í•œë‹¤.
+{						// +a staticì€ í—¤ë”íŒŒì¼ì— ì„ ì–¸í•˜ê³  êµ¬í˜„í•œë‹¤.
 	std::cout << "Study" << std::endl;
 }
 
@@ -251,4 +251,3 @@ void Employee::Action()
 {
 	std::cout << "Work" << std::endl;
 }
-
